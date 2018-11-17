@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5324207ba339c5f4c92769fa94c69356, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  gripTransform: {fileID: 4027127200071942, guid: c2033d03a5dd1984984b6b95322f856b,
+    type: 2}
+  weaponPrefab: {fileID: 1975959964877926, guid: 20a2515ad4a69764d8d080ba6416d686,
+    type: 2}
+  attackAnimation: {fileID: 7400002, guid: c011fdd87869f344f8be0b9965e3abe4, type: 3}
