@@ -65,78 +65,7 @@ namespace RPG.Character
     }
 }
 
-// Fixed update is called in sync with physics
-//    void FixedUpdate()
-//    {
-//        if (Input.GetKeyDown(KeyCode.G))//TODO add to menu. G for Gamepad 
-//        {
-//            isInDirectMode = !isInDirectMode;
-//            currentDestination = transform.position; //clearing click target
-//        }
-//        if (isInDirectMode)
-//        {
-//            ProcessDirectMovement();
-//        }
-//        else
-//        {
-//            //ProcessMouseMovement();
-//        }
-//    }
-//}
 
-
-
-//private void ProcessMouseMovement()
-//{
-//    if (Input.GetMouseButton(0))
-//    {
-//        clickPoint = cameraRaycaster.hit.point;
-//        switch (cameraRaycaster.currentLayerHit)
-//        {
-//            case Layer.Walkable:
-//                currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
-//                break;
-//            case Layer.Enemy:
-//                currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
-//                break;
-//            default:
-//                print("Unexpected layer");
-//                return;
-//        }
-
-//    }
-//    WalkToDestination();
-//}
-
-//private void WalkToDestination()
-//{
-//    var playerToClickPoint = currentDestination - transform.position;
-//    if (playerToClickPoint.magnitude >= walkMoveStopRadius)
-//    {
-//        thirdPersonCharacter.Move(playerToClickPoint, false, false);
-//    }
-//    else
-//    {
-//        thirdPersonCharacter.Move(Vector3.zero, false, false);
-//    }
-//}
-
-//Vector3 ShortDestination(Vector3 destination, float shortening)
-//{
-//    Vector3 reductionVector = (destination - transform.position).normalized * shortening;
-//    return destination - reductionVector;
-//} 
-
-//void OnDrawGizmos()
-//{
-//    Gizmos.color = Color.black;
-//    Gizmos.DrawLine(transform.position, currentDestination);
-//    Gizmos.DrawSphere(currentDestination, 0.1f);
-//    Gizmos.DrawSphere(clickPoint, 0.15f);
-
-//    Gizmos.color = new Color(255f, 0f, 0, .5f);
-//    Gizmos.DrawWireSphere(transform.position, attackMoveStopRadius);
-//}
 
 
 

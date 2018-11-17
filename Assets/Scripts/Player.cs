@@ -11,14 +11,13 @@ namespace RPG.Character
 {
     public class Player : MonoBehaviour, IDamageable
     {
-        [SerializeField]
-        float maxHealthPoints = 100f;
-        [SerializeField]
-        float damagePerHit = 10f;
+        [SerializeField] float maxHealthPoints = 100f;
+        [SerializeField]  float damagePerHit = 10f;
        
-        [SerializeField]
-        Weapon weaponInUse = null;
+        [SerializeField] Weapon weaponInUse = null;
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
+
+        [SerializeField] SpecialAbilityConfig[] abilities;
 
         Animator animator;
         float currentHealthPoints;
@@ -39,6 +38,7 @@ namespace RPG.Character
             SetCurrentMaxHealth();
             PutWeaponInHand();
             SetupRuntimeAnimator();
+            abilities[0].AttachComponentTo(gameObject);
         }
 
         public void TakeDamage(float damage)
@@ -88,6 +88,21 @@ namespace RPG.Character
             if(Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
             {
                 AttackTarget(enemy);
+            }
+            else if(Input.GetMouseButtonDown(1))
+            {
+                AttemptSpecialAbility(0, enemy);
+            }
+        }
+
+        void AttemptSpecialAbility(int abilityIndex, Enemy enemy)
+        {
+            var energyComponent = GetComponent<Energy>();
+
+            if(energyComponent.IsEnergyAvailable(10f))
+            {
+                energyComponent.ConsumeEnergy(10f);
+                abilities[abilityIndex].Use();
             }
         }
    
