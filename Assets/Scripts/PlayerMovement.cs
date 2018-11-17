@@ -20,11 +20,6 @@ namespace RPG.Character
         AICharacterControl aiCharacterControl = null;
         GameObject walkTarget = null;
 
-        [SerializeField]
-        const int walkableLayerNumber = 9;
-        [SerializeField]
-        const int enemyLayerNumber = 10;
-
         //bool isInDirectMode = false;
 
         void Start()

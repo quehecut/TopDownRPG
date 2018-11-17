@@ -9,15 +9,13 @@ namespace RPG.CameraUI
     public class CameraRaycaster : MonoBehaviour
     {
         // INSPECTOR PROPERTIES RENDERED BY CUSTOM EDITOR SCRIPT
-        [SerializeField] int[] layerPriorities;
         [SerializeField] Texture2D walkCursor = null;
         [SerializeField] Texture2D enemyCursor = null;
         [SerializeField] Vector2 cursorHotSpot = new Vector2(0, 0);
 
         const int POTENTIALLY_WALKABLE_LAYER = 9;
         float maxRaycastDepth = 100f; // Hard coded value
-        int topPriorityLayerLastFrame = -1; // So get ? from start with Default layer terrain
-
+       
         //New delegates
         //OnMouseOverTerrain(Vector3)
         //OnMouseOverEnemy(enemy)
@@ -27,20 +25,7 @@ namespace RPG.CameraUI
 
         public delegate void OnMouseOverEnemy(Enemy enemy);
         public event OnMouseOverEnemy onMouseOverEnemy;
-
-
-
-        // Setup delegates for broadcasting layer changes to other classes
-        public delegate void OnCursorLayerChange(int newLayer); // declare new delegate type
-        public event OnCursorLayerChange notifyLayerChangeObservers; // instantiate an observer set
-
-        public delegate void OnClickPriorityLayer(RaycastHit raycastHit, int layerHit); // declare new delegate type
-        public event OnClickPriorityLayer notifyMouseClickObservers; // instantiate an observer set
-
-        public delegate void OnRightClick(RaycastHit raycastHit, int layerHit); // declare new delegate type
-        public event OnRightClick notifyRightClickObservers; // instantiate an observer set
-
-
+     
         void Update()
         {
             // Check if pointer is over an interactable UI element
