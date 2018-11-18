@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine.AI;
 using RPG.CameraUI;
 
@@ -20,7 +19,7 @@ namespace RPG.Character
         AICharacterControl aiCharacterControl = null;
         GameObject walkTarget = null;
 
-        //bool isInDirectMode = false;
+        
 
         void Start()
         {

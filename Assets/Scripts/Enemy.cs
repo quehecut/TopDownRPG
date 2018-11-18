@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 using RPG.Core;
 using RPG.Weapons;
 
@@ -9,27 +8,20 @@ namespace RPG.Character
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
-        [SerializeField]
-        float maxHealthPoints = 100f;
-        [SerializeField]
-        float attackRadius = 4f;
-        [SerializeField]
-        float damagePerShot = 9f;
-        [SerializeField]
-        float secondsBetweenShots = .5f;
-        [SerializeField]
-        float chaseRadius = 6f;
-        [SerializeField]
-        GameObject projectileToUse;
-        [SerializeField]
-        GameObject projectileSocket;
-        [SerializeField]
-        Vector3 aimOffset = new Vector3(0, 1f, 0);
+        [SerializeField] float maxHealthPoints = 100f;
+        [SerializeField] float attackRadius = 4f;
+        [SerializeField] float damagePerShot = 9f;
+        [SerializeField] float firingPeriodInSec = .5f;
+        [SerializeField] float firingPeriodVariation = .2f;
+        [SerializeField] float chaseRadius = 6f;
+        [SerializeField] GameObject projectileToUse;
+        [SerializeField] GameObject projectileSocket;
+        [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
         bool isAttacking = false;
         float currentHealthPoints;
         AICharacterControl aiCharacterControl = null;
-        GameObject player = null;
+        Player player = null;
 
         public float healthAsPercentage
         {
@@ -47,17 +39,24 @@ namespace RPG.Character
 
         void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = FindObjectOfType<Player>();
             aiCharacterControl = GetComponent<AICharacterControl>();
             currentHealthPoints = maxHealthPoints;
         }
         void Update()
         {
+            if(player.healthAsPercentage <= Mathf.Epsilon)
+            {
+                StopAllCoroutines();
+                Destroy(this);
+            }
+
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             if (distanceToPlayer <= attackRadius && !isAttacking)
             {
                 isAttacking = true;
-                InvokeRepeating("FireProjectile", 0f, secondsBetweenShots);
+                float randomisedDelay = Random.Range(firingPeriodInSec - firingPeriodVariation, firingPeriodInSec + firingPeriodVariation);
+                InvokeRepeating("FireProjectile", 0f, randomisedDelay);
 
             }
 
