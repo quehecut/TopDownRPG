@@ -4,7 +4,7 @@ using UnityEngine;
 using RPG.Character;
 using RPG.Core;
 
-public class AreaEffectBehaviour : MonoBehaviour, ISpecialAbility
+public class AreaEffectBehaviour : AbilityBehaviour
 {
     AreaEffectConfig config;
         
@@ -13,7 +13,7 @@ public class AreaEffectBehaviour : MonoBehaviour, ISpecialAbility
         this.config = configToSet;
     }
 
-    public void Use(AbilityUseParams useParams)
+    public override void Use(AbilityUseParams useParams)
     {
         DealRadialDamage(useParams);
         PlayParticleEffect();
@@ -27,13 +27,15 @@ public class AreaEffectBehaviour : MonoBehaviour, ISpecialAbility
         foreach (RaycastHit hit in hits)
         {
             var damageable = hit.collider.gameObject.GetComponent<IDamageable>();
-            if (damageable != null)
+            bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
+            if (damageable != null && !hitPlayer)
             {
                 float damageToDeal = useParams.baseDamage + config.GetDamageToEachTarget();
                 damageable.TakeDamage(damageToDeal);
             }
         }
     }
+
     private void PlayParticleEffect()
     {
         var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
