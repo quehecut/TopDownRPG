@@ -6,13 +6,6 @@ using RPG.Core;
 
 public class AreaEffectBehaviour : AbilityBehaviour
 {
-    AreaEffectConfig config;
-        
-    public void SetConfig(AreaEffectConfig configToSet)
-    {
-        this.config = configToSet;
-    }
-
     public override void Use(AbilityUseParams useParams)
     {
         DealRadialDamage(useParams);
@@ -22,7 +15,7 @@ public class AreaEffectBehaviour : AbilityBehaviour
     private void DealRadialDamage(AbilityUseParams useParams)
     {
         //static sphere cast for target
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, config.GetRadius(), Vector3.up, config.GetRadius());
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, (config as AreaEffectConfig).GetRadius(), Vector3.up, (config as AreaEffectConfig).GetRadius());
 
         foreach (RaycastHit hit in hits)
         {
@@ -30,18 +23,12 @@ public class AreaEffectBehaviour : AbilityBehaviour
             bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
             if (damageable != null && !hitPlayer)
             {
-                float damageToDeal = useParams.baseDamage + config.GetDamageToEachTarget();
+                float damageToDeal = useParams.baseDamage + (config as AreaEffectConfig).GetDamageToEachTarget();
                 damageable.TakeDamage(damageToDeal);
             }
         }
     }
 
-    private void PlayParticleEffect()
-    {
-        var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
-        ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem>();
-        myParticleSystem.Play();
-        Destroy(prefab, myParticleSystem.main.duration);
-    }
+    
     
 }
