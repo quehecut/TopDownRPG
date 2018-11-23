@@ -26,6 +26,7 @@ namespace RPG.Character
 
         const string DEATH_TRIGGER = "Death";
         const string ATTACK_TRIGGER = "Attack";
+        const string DEFAULT_ATTACK = "DEFAULT ATTACK";
 
         Enemy enemy = null;
         AudioSource audioSource;
@@ -50,7 +51,7 @@ namespace RPG.Character
             RegisterForMouseClick();
             SetCurrentMaxHealth();
             PutWeaponInHand(currentWeaponConfig);
-            SetupRuntimeAnimator();
+            SetAttackAnimation();
             AttachInitialAbilities();
                         
         }
@@ -123,11 +124,11 @@ namespace RPG.Character
 
         }
 
-        private void SetupRuntimeAnimator()
+        private void SetAttackAnimation()
         {
             animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorOverrideController;
-            animatorOverrideController["DEFAULT ATTACK"] = currentWeaponConfig.GetAttackAnimClip();
+            animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip();
         }
 
         private void SetCurrentMaxHealth()
@@ -180,6 +181,7 @@ namespace RPG.Character
         {
             if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
             {
+                SetAttackAnimation();
                 animator.SetTrigger(ATTACK_TRIGGER);
                 enemy.TakeDamage(CalculateDamage());
                 lastHitTime = Time.time;
