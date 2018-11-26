@@ -26,16 +26,15 @@ namespace RPG.Character
         void Start()
         {
             player = FindObjectOfType<Player>();
-            currentHealthPoints = maxHealthPoints;
         }
+
+        public void TakeDamage(float amount)
+        {
+
+        }
+
         void Update()
         {
-            if(player.healthAsPercentage <= Mathf.Epsilon)
-            {
-                StopAllCoroutines();
-                Destroy(this);
-            }
-
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             if (distanceToPlayer <= attackRadius && !isAttacking)
             {

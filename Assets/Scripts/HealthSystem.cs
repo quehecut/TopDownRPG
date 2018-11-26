@@ -68,7 +68,7 @@ namespace RPG.Character
         {   
             StopAllCoroutines();
             characterMovement.Kill();
-            animator.SetTrigger(DEATH_TRIGGER);
+            anim.SetTrigger(DEATH_TRIGGER);
 
             var playerComponent = GetComponent<Player>();
             if(playerComponent && playerComponent.isActiveAndEnabled)

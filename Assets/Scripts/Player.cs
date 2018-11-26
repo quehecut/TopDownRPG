@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace RPG.Character
 {
-    public class Player : MonoBehaviour, IDamageable
+    public class Player : MonoBehaviour
     {
         
         [SerializeField] float baseDamage = 10f;
@@ -42,7 +42,6 @@ namespace RPG.Character
             
 
             RegisterForMouseClick();
-            SetCurrentMaxHealth();
             PutWeaponInHand(currentWeaponConfig);
             SetAttackAnimation();
             AttachInitialAbilities();
@@ -62,7 +61,8 @@ namespace RPG.Character
 
         void Update()
         {
-            if(healthAsPercentage > Mathf.Epsilon)
+            var healthPercentage = GetComponent<HealthSystem>().healthAsPercentage;
+            if(healthPercentage > Mathf.Epsilon)
             {
                 ScanForAbilityKeyDown();
             }
@@ -100,10 +100,7 @@ namespace RPG.Character
             animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip();
         }
 
-        private void SetCurrentMaxHealth()
-        {
-            currentHealthPoints = maxHealthPoints;
-        }
+       
    
         private GameObject RequestDominantHand()
         {
@@ -152,7 +149,7 @@ namespace RPG.Character
             {
                 SetAttackAnimation();
                 animator.SetTrigger(ATTACK_TRIGGER);
-                enemy.TakeDamage(CalculateDamage());
+                //enemy.TakeDamage(CalculateDamage());
                 lastHitTime = Time.time;
             }
         }
