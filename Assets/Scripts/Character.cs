@@ -62,6 +62,11 @@ namespace RPG.Character
             agent.stoppingDistance = stoppingDistance;
         }
 
+        public float GetAnimSpeedMultiplier()
+        {
+            return anim.speed;
+        }
+
         public void SetDestination(Vector3 worldPos)
         {
             agent.destination = worldPos;
