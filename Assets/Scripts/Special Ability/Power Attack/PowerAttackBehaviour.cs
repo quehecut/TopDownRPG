@@ -9,6 +9,7 @@ namespace RPG.Character
            
         public override void Use(GameObject target)
         {
+            PlayAbilityAnimation();
             DealDamage(target);
         }
 

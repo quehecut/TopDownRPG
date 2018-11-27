@@ -8,10 +8,8 @@ namespace RPG.Character
 {
     public class Player : MonoBehaviour
     {             
-        EnemyAI enemy = null;
         SpecialAbilities abilities;
         WeaponSystem weaponSystem;
-        CameraRaycaster cameraRaycaster;
         Character character;        
 
         void Start()
@@ -25,7 +23,7 @@ namespace RPG.Character
 
         private void RegisterForMouseEvents()
         {
-            cameraRaycaster = FindObjectOfType<CameraRaycaster>();
+            var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
             cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }       
@@ -54,23 +52,54 @@ namespace RPG.Character
             }
         }
         
-        void OnMouseOverEnemy(EnemyAI enemyToSet)
-        {
-            this.enemy = enemyToSet;
-            if(Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
-            {
-                weaponSystem.AttackTarget(enemy.gameObject);
-            }
-            else if(Input.GetMouseButtonDown(1))
-            {
-                abilities.AttemptSpecialAbility(0);
-            }
-        }           
-        
         bool IsTargetInRange(GameObject target)
         {
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
              return distanceToTarget <= weaponSystem.GetCurrrentWeapon().GetMaxAttackRange();
+        }
+
+        void OnMouseOverEnemy(EnemyAI enemy)
+        {
+           
+            if(Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
+            {
+                weaponSystem.AttackTarget(enemy.gameObject);
+            }
+            else if(Input.GetMouseButton(0) && !IsTargetInRange(enemy.gameObject))
+            {
+                StartCoroutine(MoveAndAttack(enemy));
+            }
+            else if(Input.GetMouseButtonDown(1) && IsTargetInRange(enemy.gameObject))
+            {
+                abilities.AttemptSpecialAbility(0, enemy.gameObject);
+            }
+            else if(Input.GetMouseButtonDown(1) && !IsTargetInRange(enemy.gameObject))
+            {
+                StartCoroutine(MoveAndPowerAttack(enemy));
+            }
+        }           
+        
+        IEnumerator MoveToTarget(GameObject target)
+        {
+            character.SetDestination(target.transform.position);
+            while (!IsTargetInRange(target))
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            yield return new WaitForEndOfFrame();
+        }
+
+        IEnumerator MoveAndAttack(EnemyAI enemy)
+        {
+            yield return StartCoroutine(MoveToTarget(enemy.gameObject));
+            weaponSystem.AttackTarget(enemy.gameObject);
+        }
+
+        IEnumerator MoveAndPowerAttack(EnemyAI enemy)
+        {
+            yield return StartCoroutine(MoveToTarget(enemy.gameObject));
+           // transform.LookAt(enemy.transform);
+            abilities.AttemptSpecialAbility(0, enemy.gameObject);
         }
 
         

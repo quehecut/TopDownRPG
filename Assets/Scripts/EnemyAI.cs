@@ -68,7 +68,7 @@ namespace RPG.Character
         {
             state = State.patrolling;
 
-            while (true)
+            while (patrolPath != null)
             {
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild(nextWaypointIndex).position;
                 character.SetDestination(nextWaypointPos);

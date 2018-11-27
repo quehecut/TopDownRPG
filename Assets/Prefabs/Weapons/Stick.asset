@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,7 +13,10 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   gripTransform: {fileID: 4027127200071942, guid: 2cbc522f80c38274d8c4028c5e286932,
-    type: 2}
+    type: 3}
+  minTimeBetweenHit: 0.5
+  maxAttackRange: 2
+  additionalDamage: 10
   weaponPrefab: {fileID: 1749005091545376, guid: 2822f5962cee2e243b19768607ce8806,
-    type: 2}
+    type: 3}
   attackAnimation: {fileID: 7400004, guid: bc509f8939b12264ea2fe84b2ad22d28, type: 3}
