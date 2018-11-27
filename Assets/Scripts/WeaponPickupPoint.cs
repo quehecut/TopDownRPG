@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Character;
 
-namespace RPG.Weapons
+namespace RPG.Character
 {
     public class WeaponPickupPoint : MonoBehaviour
     {
-        [SerializeField] Weapon weaponConfig;
+        [SerializeField] WeaponConfig weaponConfig;
         [SerializeField] AudioClip pickUpSFX;
 
         AudioSource audioSource;
@@ -45,7 +45,7 @@ namespace RPG.Weapons
 
         void OnTriggerEnter()
         {
-            FindObjectOfType<Player>().PutWeaponInHand(weaponConfig);
+            FindObjectOfType<WeaponSystem>().PutWeaponInHand(weaponConfig);
             audioSource.PlayOneShot(pickUpSFX);
             
         }

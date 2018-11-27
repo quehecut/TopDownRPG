@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Weapons
+namespace RPG.Character
 {
     [CreateAssetMenu(menuName = ("RPG/Weapon"))]
-    public class Weapon : ScriptableObject
+    public class WeaponConfig: ScriptableObject
     {
 
         public Transform gripTransform;

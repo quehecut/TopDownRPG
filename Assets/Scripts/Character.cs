@@ -91,6 +91,10 @@ namespace RPG.Character
 			forwardAmount = localMove.z;
 		}
 
+        public AnimatorOverrideController GetOverrideController()
+        {
+            return animOverrideController;
+        }
 	
 		void UpdateAnimator()
 		{
