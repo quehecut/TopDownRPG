@@ -7,6 +7,7 @@ public class AreaEffectBehaviour : AbilityBehaviour
 {
     public override void Use(GameObject target)
     {
+        PlayAbilityAnimation();
         DealRadialDamage();
         PlayParticleEffect();
     }

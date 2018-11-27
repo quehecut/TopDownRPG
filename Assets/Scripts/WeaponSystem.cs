@@ -18,7 +18,7 @@ namespace RPG.Character
         GameObject weaponObject;
         Animator animator;
         Character character;
-        // Start is called before the first frame update
+       
         void Start()
         {
             animator = GetComponent<Animator>();
@@ -28,10 +28,32 @@ namespace RPG.Character
             SetAttackAnimation();
         }
 
-        // Update is called once per frame
         void Update()
         {
-            
+            bool targetIsDead;
+            bool targetOutOfRange;
+
+            if(target == null)
+            {
+                targetIsDead = false;
+                targetOutOfRange = false;
+            }
+            else
+            {
+                var targetHealth = target.GetComponent<HealthSystem>().healthAsPercentage;
+                targetIsDead = targetHealth <= Mathf.Epsilon;
+
+                var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+                targetOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
+            }
+
+            float characterHealth = GetComponent<HealthSystem>().healthAsPercentage;
+            bool characterIsDead = (characterHealth <= Mathf.Epsilon);
+
+            if(characterIsDead || targetOutOfRange || targetIsDead)
+            {
+                StopAllCoroutines();
+            }
         }
 
         public void PutWeaponInHand(WeaponConfig weaponToUse)
