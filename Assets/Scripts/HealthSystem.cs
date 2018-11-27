@@ -21,7 +21,7 @@ namespace RPG.Character
 
         Animator anim;
         AudioSource audioSource = null;
-        CharacterMovement characterMovement;
+        Character character;
 
         public float healthAsPercentage { get {return currentHealthPoints / maxHealthPoints; } }
         // Start is called before the first frame update
@@ -29,7 +29,7 @@ namespace RPG.Character
         {
             anim = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            characterMovement = GetComponent<CharacterMovement>();
+            character = GetComponent<Character>();
             currentHealthPoints = maxHealthPoints;
         }
 
@@ -68,7 +68,7 @@ namespace RPG.Character
         IEnumerator KillCharacter()
         {   
             StopAllCoroutines();
-            characterMovement.Kill();
+            character.Kill();
             anim.SetTrigger(DEATH_TRIGGER);
 
             var playerComponent = GetComponent<Player>();

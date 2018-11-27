@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyCost: 10
   particlePrefab: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 91e0dd4da8f12e942b0490528a272e3f, type: 3}
   extraHealth: 50

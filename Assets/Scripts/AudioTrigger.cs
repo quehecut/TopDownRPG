@@ -6,7 +6,7 @@ public class AudioTrigger : MonoBehaviour
 {
     // Serialized
     [SerializeField] AudioClip clip;
-    [SerializeField] int layerFilter = 11;
+//    [SerializeField] int layerFilter = 11;
     [SerializeField] float playerDistanceThreshold = 5f;
     [SerializeField] bool isOneTimeOnly = true;
 

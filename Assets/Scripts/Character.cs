@@ -6,8 +6,19 @@ using RPG.CameraUI;
 namespace RPG.Character
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class CharacterMovement : MonoBehaviour
+    public class Character : MonoBehaviour
     {
+        [Header("Animator Setup Settings")]
+        [SerializeField] RuntimeAnimatorController animController;
+        [SerializeField] AnimatorOverrideController animOverrideController;
+        [SerializeField] Avatar characterAvatar;
+
+        [Header("Collider Capsule Settings")]
+        [SerializeField] Vector3 colliderCenter = new Vector3(0, 0.84f, 0);
+        [SerializeField] float colliderRadius = 0.3f;
+        [SerializeField] float colliderHeight = 1.6f;
+
+        [Header("Movement Settings")]
         [SerializeField] float movingTurnSpeed = 360;
 		[SerializeField] float stationaryTurnSpeed = 180;
         [SerializeField] float stoppingDistance = 1f;
@@ -15,29 +26,45 @@ namespace RPG.Character
 
         float turnAmount;
 		float forwardAmount;
+        bool isAlive = true;
           
-        Vector3 clickPoint;
         NavMeshAgent agent;
-
         Animator anim;
         Rigidbody rigid;
-    
+
+        void Awake()
+        {
+            AddRequiredComponents();
+        }
+
+        private void AddRequiredComponents()
+        {
+            var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+            capsuleCollider.center = colliderCenter;
+            capsuleCollider.radius = colliderRadius;
+            capsuleCollider.height = colliderHeight;
+
+            rigid = gameObject.AddComponent<Rigidbody>();
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
+
+            var audioSource = gameObject.AddComponent<AudioSource>();
+
+            anim = gameObject.AddComponent<Animator>();
+            anim.runtimeAnimatorController = animController;
+            anim.avatar = characterAvatar;
+        }
 
         void Start()
-        {
-            CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-            
-            anim = GetComponent<Animator>();
-            anim.applyRootMotion = true;
-            rigid = GetComponent<Rigidbody>();
-
+        {                      
             agent = GetComponent<NavMeshAgent>();
             agent.updatePosition = false;
             agent.updateRotation = true;
             agent.stoppingDistance = stoppingDistance;
+        }
 
-            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
-            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+        public void SetDestination(Vector3 worldPos)
+        {
+            agent.destination = worldPos;
         }
 
         void Move(Vector3 movement)
@@ -49,7 +76,7 @@ namespace RPG.Character
 
         public void Kill()
         {
-            
+            isAlive = false;
         }
 
 		private void SetMovement(Vector3 movement)
@@ -83,7 +110,7 @@ namespace RPG.Character
         void Update()
         {
             
-            if(agent.remainingDistance > agent.stoppingDistance)
+            if(agent.remainingDistance > agent.stoppingDistance && isAlive)
             {
                 Move(agent.desiredVelocity);
             }
@@ -93,21 +120,7 @@ namespace RPG.Character
             }
         }
 
-        void OnMouseOverPotentiallyWalkable(Vector3 destination)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                agent.SetDestination(destination);
-            }
-        }
-
-        void OnMouseOverEnemy(Enemy enemy)
-        {
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
-            {
-               agent.SetDestination(enemy.transform.position);
-            }
-        }
+        
 
         void OnAnimatorMove()
         {

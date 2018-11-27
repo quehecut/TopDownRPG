@@ -505,7 +505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: ab6a5d6696eb62742afef32b11b30054, type: 3}
-  layerFilter: 11
   playerDistanceThreshold: 1.79
   isOneTimeOnly: 0
 --- !u!1001 &354109284
@@ -715,9 +714,17 @@ PrefabInstance:
       propertyPath: firingPeriodInSec
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1990474550195568, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114523795498477160, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
     - {fileID: 114718411891683610, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+    - {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+    - {fileID: 136635733436304030, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+    - {fileID: 54431528683206534, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+    - {fileID: 95908645957747276, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
 --- !u!1 &653330848
 GameObject:
@@ -775,6 +782,10 @@ PrefabInstance:
       propertyPath: abilities.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: abilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4193458585922216, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -826,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
       propertyPath: energyOrb
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 244335995}
     - target: {fileID: 114869355184052112, guid: f8c40f12e3504c941a80a4f8273b8865,
         type: 3}
       propertyPath: m_MoveSpeedMultiplier
@@ -835,7 +846,7 @@ PrefabInstance:
     - target: {fileID: 54257488141543628, guid: f8c40f12e3504c941a80a4f8273b8865,
         type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
       propertyPath: regenPointsPerSecond
@@ -845,15 +856,75 @@ PrefabInstance:
         type: 3}
       propertyPath: currentWeaponConfig
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 951c62042921b7e449d1fa6deeabe347,
+        type: 2}
     - target: {fileID: 114523522952886134, guid: f8c40f12e3504c941a80a4f8273b8865,
         type: 3}
       propertyPath: animatorOverrideController
       value: 
+      objectReference: {fileID: 22100000, guid: 8fb5da731aa3d63409bdd86c736a0d6e,
+        type: 2}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: energyBar
+      value: 
+      objectReference: {fileID: 244335995}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 48ede0cd8b7407148a65f0c0f8453b5e,
+        type: 2}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fbe4207eca205aa4e9e71a2aaafc60a4,
+        type: 2}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: abilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70937c5857c3a7d4a879002407cd81b5,
+        type: 2}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: outOfEnergy
+      value: 
+      objectReference: {fileID: 8300000, guid: acc48af43863eca4da3c565026be15fb, type: 3}
+    - target: {fileID: 195678135404503424, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: m_Speed
+      value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 195678135404503424, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 195678135404503424, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494009611644094, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: animController
+      value: 
+      objectReference: {fileID: 9100000, guid: 6e3e8928abf24db47a5921be93dd6090, type: 2}
+    - target: {fileID: 114494009611644094, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: animOverrideController
+      value: 
+      objectReference: {fileID: 22100000, guid: 8fb5da731aa3d63409bdd86c736a0d6e,
+        type: 2}
+    - target: {fileID: 114494009611644094, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: characterAvatar
+      value: 
+      objectReference: {fileID: 9000000, guid: a3b7584dce71b2a418aa60ed933a6f3b, type: 3}
     m_RemovedComponents:
     - {fileID: 114345818866230416, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
     - {fileID: 114869355184052112, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+    - {fileID: 95176436182312254, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+    - {fileID: 136840709363658430, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+    - {fileID: 54257488141543628, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+    - {fileID: 1240387440, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
 --- !u!1 &685291448 stripped
 GameObject:
@@ -1914,6 +1985,34 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1887687680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1990474550195568, guid: fa6dee357a9040c4682731aa296d34f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 633241210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1887687681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887687680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9ef231d12531049a050c8c884022e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animController: {fileID: 0}
+  animOverrideController: {fileID: 0}
+  characterAvatar: {fileID: 0}
+  colliderCenter: {x: 0, y: 0.84, z: 0}
+  colliderRadius: 0.3
+  colliderHeight: 1.6
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
+  stoppingDistance: 1
+  moveSpeedMultiplier: 1
 --- !u!1001 &1896460851
 PrefabInstance:
   m_ObjectHideFlags: 0

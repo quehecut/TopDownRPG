@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using RPG.CameraUI;
 using RPG.Weapons;
-using UnityEngine.SceneManagement;
+
 
 namespace RPG.Character
 {
@@ -34,16 +34,26 @@ namespace RPG.Character
         CameraRaycaster cameraRaycaster;
         float lastHitTime = 0f;
         GameObject weaponObject;
+        Character character;
 
         
 
         void Start()
         {
+            character = GetComponent<Character>();
             abilities = GetComponent<SpecialAbilities>();
-            RegisterForMouseClick();
+
+            RegisterForMouseEvents();
             PutWeaponInHand(currentWeaponConfig);
             SetAttackAnimation();
                                   
+        }
+
+        private void RegisterForMouseEvents()
+        {
+            cameraRaycaster = FindObjectOfType<CameraRaycaster>();
+            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
 
         public void PutWeaponInHand(Weapon weaponToUse)
@@ -59,14 +69,10 @@ namespace RPG.Character
 
         void Update()
         {
-            var healthPercentage = GetComponent<HealthSystem>().healthAsPercentage;
-            if(healthPercentage > Mathf.Epsilon)
-            {
-                ScanForAbilityKeyDown();
-            }
+            ScanForAbilityKeyDown();
         }
 
-        private void ScanForAbilityKeyDown()
+        void ScanForAbilityKeyDown()
         {
             for(int keyIndex = 1; keyIndex < abilities.GetNumberOfAbilities(); keyIndex++)
             {
@@ -95,11 +101,14 @@ namespace RPG.Character
             return dominantHands[0].gameObject;
         }
 
-        private void RegisterForMouseClick()
+        void OnMouseOverPotentiallyWalkable(Vector3 destination)
         {
-            cameraRaycaster = FindObjectOfType<CameraRaycaster>();
-            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+            if(Input.GetMouseButton(0))
+            {
+                character.SetDestination(destination);
+            }
         }
+        
 
         void OnMouseOverEnemy(Enemy enemyToSet)
         {
