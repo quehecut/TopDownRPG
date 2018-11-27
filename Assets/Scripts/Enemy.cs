@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Core;
 using RPG.Weapons;
 
 namespace RPG.Character
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour
     {
         
         [SerializeField] float attackRadius = 4f;
@@ -61,17 +60,17 @@ namespace RPG.Character
             }
         }
 
-        void FireProjectile()
-        {
-            GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
-            var projectileComponent = newProjectile.GetComponent<Projectile>();
-            projectileComponent.SetDamage(damagePerShot);
-            projectileComponent.SetShooter(gameObject);
+        // void FireProjectile()
+        // {
+        //     GameObject newProjectile = Instantiate(projectileToUse, projectileSocket.transform.position, Quaternion.identity);
+        //     var projectileComponent = newProjectile.GetComponent<Projectile>();
+        //     projectileComponent.SetDamage(damagePerShot);
+        //     projectileComponent.SetShooter(gameObject);
 
-            Vector3 unitVectorToPlayer = (player.transform.position + aimOffset - projectileSocket.transform.position).normalized;
-            float projectileSpeed = projectileComponent.GetDefaultLaunchSpeed();
-            newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
-        }
+        //     Vector3 unitVectorToPlayer = (player.transform.position + aimOffset - projectileSocket.transform.position).normalized;
+        //     float projectileSpeed = projectileComponent.GetDefaultLaunchSpeed();
+        //     newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
+        // }
 
         void OnDrawGizmos()
         {

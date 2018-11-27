@@ -770,6 +770,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114523522952886134, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: abilities.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193458585922216, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -821,7 +826,7 @@ PrefabInstance:
     - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
       propertyPath: energyOrb
       value: 
-      objectReference: {fileID: 244335995}
+      objectReference: {fileID: 0}
     - target: {fileID: 114869355184052112, guid: f8c40f12e3504c941a80a4f8273b8865,
         type: 3}
       propertyPath: m_MoveSpeedMultiplier
@@ -832,10 +837,47 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 1240387439, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+      propertyPath: regenPointsPerSecond
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114523522952886134, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: currentWeaponConfig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114523522952886134, guid: f8c40f12e3504c941a80a4f8273b8865,
+        type: 3}
+      propertyPath: animatorOverrideController
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114345818866230416, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
     - {fileID: 114869355184052112, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f8c40f12e3504c941a80a4f8273b8865, type: 3}
+--- !u!1 &685291448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046545117674100, guid: f8c40f12e3504c941a80a4f8273b8865,
+    type: 3}
+  m_PrefabInstance: {fileID: 685291447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &685291449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685291448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c710b265ae5bc8441a94125c47684deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  healthBar: {fileID: 930138910}
+  damageSounds: []
+  deathSounds: []
+  deathVanishSec: 2
 --- !u!4 &734068857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4642384042507322, guid: bc52923be08ec9040850b711f15f5783,
@@ -1175,7 +1217,6 @@ GameObject:
   - component: {fileID: 930138908}
   - component: {fileID: 930138911}
   - component: {fileID: 930138910}
-  - component: {fileID: 930138909}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -1202,18 +1243,6 @@ RectTransform:
   m_AnchoredPosition: {x: -220.1, y: -11.900024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &930138909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930138907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94587b07b71f154f861d927f993fe9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &930138910
 MonoBehaviour:
   m_ObjectHideFlags: 0
