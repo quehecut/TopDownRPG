@@ -73,6 +73,11 @@ namespace RPG.Character
             StartCoroutine(AttackTargetRepeatedly());
         }
 
+        public void StopAttacking()
+        {
+            StopAllCoroutines();
+        }
+
         IEnumerator AttackTargetRepeatedly()
         {
             bool attackerStillAlive = GetComponent<HealthSystem>().healthAsPercentage >= Mathf.Epsilon;

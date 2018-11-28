@@ -15,7 +15,7 @@ MonoBehaviour:
   gripTransform: {fileID: 4027127200071942, guid: c2033d03a5dd1984984b6b95322f856b,
     type: 3}
   minTimeBetweenHit: 0.5
-  maxAttackRange: 2
+  maxAttackRange: 1.5
   additionalDamage: 10
   weaponPrefab: {fileID: 1975959964877926, guid: 20a2515ad4a69764d8d080ba6416d686,
     type: 3}
