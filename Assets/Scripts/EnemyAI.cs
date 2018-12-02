@@ -18,7 +18,7 @@ namespace RPG.Character
         enum State { idle, attacking, patrolling, chasing }
         State state = State.idle;
 
-        Player player = null;
+        Player player;
         Character character;
         int nextWaypointIndex;
         float currentWeaponRange;

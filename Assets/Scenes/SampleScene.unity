@@ -112,12 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 9462efefd4aaee44083e555f44e32392, type: 2}
---- !u!1 &76282043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1502752905457786, guid: fa6dee357a9040c4682731aa296d34f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 633241210}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &92343452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 4866ea112785730498936576accd732c,
@@ -252,7 +246,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waypoint (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -694,67 +688,27 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: projectileToUse
-      value: 
-      objectReference: {fileID: 1189428522890846, guid: 69d55e1a807e439418a2bb631dc7fae9,
-        type: 3}
-    - target: {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: projectileSocket
-      value: 
-      objectReference: {fileID: 76282043}
+    - target: {fileID: 4732418444518178, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4732418444518178, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 343.948
       objectReference: {fileID: 0}
-    - target: {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: attackRadius
-      value: 4.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: chaseRadius
-      value: 3.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 114718411891683610, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: m_GroundCheckDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114718411891683610, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: m_MovingTurnSpeed
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 114718411891683610, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: m_StationaryTurnSpeed
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: secondsBetweenShots
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1,
-        type: 3}
-      propertyPath: firingPeriodInSec
-      value: 1
+    - target: {fileID: 4732418444518178, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1990474550195568, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Name
+      value: Enemy 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114523795498477160, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
-    - {fileID: 114718411891683610, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
-    - {fileID: 114494893675474354, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
-    - {fileID: 136635733436304030, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
-    - {fileID: 54431528683206534, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
-    - {fileID: 95908645957747276, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+    - target: {fileID: 1887687684, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 1439349996}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa6dee357a9040c4682731aa296d34f1, type: 3}
 --- !u!1 &653330848
 GameObject:
@@ -976,8 +930,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   healthBar: {fileID: 930138910}
-  damageSounds: []
-  deathSounds: []
+  damageSounds:
+  - {fileID: 8300000, guid: d08e8a399d606bf44ae12f3a6050c99d, type: 3}
+  - {fileID: 8300000, guid: 318ff956dd71faa48911305233da760f, type: 3}
+  - {fileID: 8300000, guid: 1b143690759de904685fb1d2bcea52a0, type: 3}
+  - {fileID: 8300000, guid: 8a8118bc2ac5188448c9eabc99d6e8fa, type: 3}
+  - {fileID: 8300000, guid: 4e64c9f30d7f03e41aaa5949c6cb3fc4, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: f9c181d553eb1574fafb3d046994cba1, type: 3}
+  - {fileID: 8300000, guid: f92715585efef5c458d43a6730f8ef8a, type: 3}
+  - {fileID: 8300000, guid: aaf3f1f6c0e196345a9625883444fa19, type: 3}
   deathVanishSec: 2
 --- !u!114 &685291455
 MonoBehaviour:
@@ -1727,7 +1689,7 @@ GameObject:
   m_Layer: 0
   m_Name: Patrol Path
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1884,24 +1846,6 @@ Transform:
   m_Father: {fileID: 1315265968}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 15.752001, y: 0, z: 0}
---- !u!1 &1508989568 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1078100492583052, guid: fa6dee357a9040c4682731aa296d34f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 633241210}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1508989570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508989568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd9bbf6b9396e647a943681062a5f4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1526980365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,7 +1946,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waypoint (0)
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2032,7 +1976,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waypoint (4)
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2062,7 +2006,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waypoint (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2186,87 +2130,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1887687680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1990474550195568, guid: fa6dee357a9040c4682731aa296d34f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 633241210}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1887687681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e9ef231d12531049a050c8c884022e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animController: {fileID: 9100000, guid: 6e3e8928abf24db47a5921be93dd6090, type: 2}
-  animOverrideController: {fileID: 22100000, guid: 8fb5da731aa3d63409bdd86c736a0d6e,
-    type: 2}
-  characterAvatar: {fileID: 9000000, guid: f46d1ba4f4cbd1f44b2793bc6c80fff1, type: 3}
-  colliderCenter: {x: 0, y: 0.84, z: 0}
-  colliderRadius: 0.3
-  colliderHeight: 1.6
-  movingTurnSpeed: 360
-  stationaryTurnSpeed: 180
-  stoppingDistance: 1
-  moveSpeedMultiplier: 1
---- !u!114 &1887687683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96d59e4e96fff344aafe125ae288737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 10
-  currentWeaponConfig: {fileID: 11400000, guid: 84cd580a1b5ff224fbecdc6d4a886d4f,
-    type: 2}
---- !u!114 &1887687684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d5874259055954da87d9552f861272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseRadius: 6
-  patrolPath: {fileID: 1439349996}
-  waypointTolerance: 2
---- !u!114 &1887687685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887687680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c710b265ae5bc8441a94125c47684deb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthPoints: 100
-  healthBar: {fileID: 0}
-  damageSounds:
-  - {fileID: 8300000, guid: d08e8a399d606bf44ae12f3a6050c99d, type: 3}
-  - {fileID: 8300000, guid: 318ff956dd71faa48911305233da760f, type: 3}
-  - {fileID: 8300000, guid: 1b143690759de904685fb1d2bcea52a0, type: 3}
-  - {fileID: 8300000, guid: 8a8118bc2ac5188448c9eabc99d6e8fa, type: 3}
-  - {fileID: 8300000, guid: 4e64c9f30d7f03e41aaa5949c6cb3fc4, type: 3}
-  deathSounds: []
-  deathVanishSec: 2
 --- !u!1001 &1896460851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2398,7 +2261,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waypoint (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

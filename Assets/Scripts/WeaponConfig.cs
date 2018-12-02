@@ -10,20 +10,25 @@ namespace RPG.Character
 
         public Transform gripTransform;
 
-        [SerializeField] float minTimeBetweenHit = .5f;
         [SerializeField] float maxAttackRange = 2f;
         [SerializeField] float additionalDamage = 10f;
+        [SerializeField] float damageDelay = 0.5f;
         [SerializeField] GameObject weaponPrefab;
         [SerializeField] AnimationClip attackAnimation;
 
         public float GetMinTimeBetweenHits()
         {
-            return minTimeBetweenHit;
+            return attackAnimation.length;;
         }
 
         public float GetMaxAttackRange()
         {
             return maxAttackRange;
+        }
+
+        public float GetDamageDelay()
+        {
+            return damageDelay;
         }
 
         public GameObject GetWeaponPrefab()
