@@ -76,7 +76,7 @@ namespace RPG.Character
             {
                 audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
                 audioSource.Play();
-                yield return new WaitForSecondsRealtime(audioSource.clip.length);
+                yield return new WaitForSecondsRealtime(3f);
                 SceneManager.LoadScene(0);
             }
             else
