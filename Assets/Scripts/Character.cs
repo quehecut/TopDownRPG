@@ -57,7 +57,7 @@ namespace RPG.Character
         void Start()
         {                      
             agent = GetComponent<NavMeshAgent>();
-            agent.updatePosition = false;
+            //agent.updatePosition = false;
             agent.updateRotation = true;
             agent.stoppingDistance = stoppingDistance;
         }
